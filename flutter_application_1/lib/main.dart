@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/Transaction.dart';
 import 'package:flutter_application_1/providers/transaction_provider.dart';
 import 'package:flutter_application_1/screens/form_screen.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: const MyHomePage(title: 'แอพบัญชี'),
       ),
@@ -53,23 +55,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.add))
           ],
         ),
-        body: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, int index) {
-              return Card(
-                elevation: 5,
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: FittedBox(
-                      child: Text("500"),
+        body: Consumer(
+          builder: (context, TransactionProvider provider, Widget) {
+            return ListView.builder(
+                itemCount: provider.transactions.length,
+                itemBuilder: (context, int index) {
+                  Transaction data = provider.transactions[index];
+                  return Card(
+                    elevation: 5,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 30,
+                        child: FittedBox(
+                          child: Text(data.amount.toString()),
+                        ),
+                      ),
+                      title: Text(data.title),
+                      subtitle: Text(data.date.toString()),
                     ),
-                  ),
-                  title: Text("รายการ"),
-                  subtitle: Text("01/8/2022"),
-                ),
-              );
-            }));
+                  );
+                });
+          },
+        ));
   }
 }
