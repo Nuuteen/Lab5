@@ -3,5 +3,5 @@ class Transaction {
   double amount; //จำนวนเงิน
   DateTime date; //วันที่ เวลา บันทายการ
 
-  Transaction({this.title, this.amount, this.date});
+  Transaction({required this.title, required this.amount, required this.date});
 }
