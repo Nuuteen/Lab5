@@ -51,6 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 5,
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: FittedBox(
+                      child: Text("500"),
+                    ),
+                  ),
                   title: Text("รายการ"),
                   subtitle: Text("01/8/2022"),
                 ),
