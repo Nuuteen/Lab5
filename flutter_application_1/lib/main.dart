@@ -44,12 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.add))
           ],
         ),
-        body: ListView.builder(itemBuilder: (context, int index) {
-          return Card(
-            child: ListTile(
-              title: Text("เมนู"),
-            ),
-          );
-        }));
+        body: ListView.builder(
+            itemCount: 4,
+            itemBuilder: (context, int index) {
+              return Card(
+                elevation: 5,
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                child: ListTile(
+                  title: Text("รายการ"),
+                  subtitle: Text("01/8/2022"),
+                ),
+              );
+            }));
   }
 }
