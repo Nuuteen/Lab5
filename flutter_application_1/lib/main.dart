@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: Consumer(
-          builder: (context, TransactionProvider provider, Widget) {
+          builder: (context, TransactionProvider provider, child) {
             return ListView.builder(
                 itemCount: provider.transactions.length,
                 itemBuilder: (context, int index) {
