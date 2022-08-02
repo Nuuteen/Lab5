@@ -10,8 +10,10 @@ class TransactionProvider with ChangeNotifier {
   }
 
   void addTransaction(Transactions statement) async {
-    var db = await TransactionDB(dbName: "transaction.db");
-    print(db);
+    // var db = await TransactionDB(dbName: "transaction.db");
+    // print(db);
+    var db = TransactionDB(dbName: "transactions.db");
+    await db.InsertData(statement);
     transactions.insert(0, statement);
     notifyListeners();
   }
