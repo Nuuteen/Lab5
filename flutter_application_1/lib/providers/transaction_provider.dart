@@ -14,6 +14,7 @@ class TransactionProvider with ChangeNotifier {
     // print(db);
     var db = TransactionDB(dbName: "transactions.db");
     await db.InsertData(statement);
+    await db.loadAllData();
     transactions.insert(0, statement);
     notifyListeners();
   }
